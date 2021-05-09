@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 156.359 s <<< FAILURE! - in TestSuite
+Test1(com.AutomationTask.demoProject1.TestCalss1)  Time elapsed: 22.469 s  <<< FAILURE!
+java.lang.AssertionError: 
+The following asserts failed:
+	expected [Welcome to New TESSAA] but found [Welcome to New TESSA]
+	at com.AutomationTask.demoProject1.TestCalss1.Test1(TestCalss1.java:43)
+
