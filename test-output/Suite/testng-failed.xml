@@ -6,9 +6,8 @@
       <class name="com.AutomationTask.demoProject1.TestCalss1">
         <methods>
           <include name="launchDriver"/>
-          <include name="Test3"/>
+          <include name="Test1"/>
           <include name="quit"/>
-          <include name="Test2"/>
         </methods>
       </class> <!-- com.AutomationTask.demoProject1.TestCalss1 -->
     </classes>
