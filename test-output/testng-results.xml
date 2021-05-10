@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-05-09T07:42:32Z" name="Suite" finished-at="2021-05-09T07:43:12Z" duration-ms="40533">
+  <suite started-at="2021-05-09T13:52:04Z" name="Default suite" finished-at="2021-05-09T13:53:32Z" duration-ms="87898">
     <groups>
     </groups>
-    <test started-at="2021-05-09T07:42:32Z" name="Test" finished-at="2021-05-09T07:43:12Z" duration-ms="40533">
+    <test started-at="2021-05-09T13:52:04Z" name="Default test" finished-at="2021-05-09T13:53:32Z" duration-ms="87898">
       <class name="com.AutomationTask.demoProject1.TestCalss1">
-        <test-method is-config="true" signature="launchDriver()[pri:0, instance:com.AutomationTask.demoProject1.TestCalss1@41a0aa7d]" started-at="2021-05-09T07:42:32Z" name="launchDriver" finished-at="2021-05-09T07:42:43Z" duration-ms="11461" status="PASS">
+        <test-method is-config="true" signature="launchDriver()[pri:0, instance:com.AutomationTask.demoProject1.TestCalss1@f78a47e]" started-at="2021-05-09T13:52:04Z" name="launchDriver" finished-at="2021-05-09T13:52:32Z" duration-ms="28172" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchDriver -->
-        <test-method signature="Test1()[pri:0, instance:com.AutomationTask.demoProject1.TestCalss1@41a0aa7d]" started-at="2021-05-09T07:42:43Z" name="Test1" finished-at="2021-05-09T07:42:47Z" duration-ms="4240" status="FAIL">
+        <test-method signature="Test1()[pri:0, instance:com.AutomationTask.demoProject1.TestCalss1@f78a47e]" started-at="2021-05-09T13:52:32Z" name="Test1" finished-at="2021-05-09T13:52:52Z" duration-ms="19608" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[The following asserts failed:
-expected [Welcome to New TESSAa] but found [Welcome to New TESSA]]]>
+              <![CDATA[expected [Welcome to New TESSAa] but found [Welcome to New TESSA]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: The following asserts failed:
-expected [Welcome to New TESSAa] but found [Welcome to New TESSA]
-at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:43)
-at com.AutomationTask.demoProject1.TestCalss1.Test1(TestCalss1.java:43)
+              <![CDATA[java.lang.AssertionError: expected [Welcome to New TESSAa] but found [Welcome to New TESSA]
+at org.testng.Assert.fail(Assert.java:96)
+at org.testng.Assert.failNotEquals(Assert.java:776)
+at org.testng.Assert.assertEqualsImpl(Assert.java:137)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:453)
+at org.testng.Assert.assertEquals(Assert.java:463)
+at com.AutomationTask.demoProject1.TestCalss1.Test1(TestCalss1.java:45)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -53,23 +56,18 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Test1 -->
-        <test-method is-config="true" signature="quit()[pri:0, instance:com.AutomationTask.demoProject1.TestCalss1@41a0aa7d]" started-at="2021-05-09T07:42:47Z" name="quit" finished-at="2021-05-09T07:42:49Z" duration-ms="1357" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method is-config="true" signature="launchDriver()[pri:0, instance:com.AutomationTask.demoProject1.TestCalss1@41a0aa7d]" started-at="2021-05-09T07:42:49Z" name="launchDriver" finished-at="2021-05-09T07:42:59Z" duration-ms="10033" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- launchDriver -->
-        <test-method signature="Test2()[pri:0, instance:com.AutomationTask.demoProject1.TestCalss1@41a0aa7d]" started-at="2021-05-09T07:42:59Z" name="Test2" finished-at="2021-05-09T07:43:11Z" duration-ms="12479" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Test2 -->
-        <test-method is-config="true" signature="quit()[pri:0, instance:com.AutomationTask.demoProject1.TestCalss1@41a0aa7d]" started-at="2021-05-09T07:43:11Z" name="quit" finished-at="2021-05-09T07:43:12Z" duration-ms="838" status="PASS">
+        <test-method is-config="true" signature="quit(org.testng.ITestResult)[pri:0, instance:com.AutomationTask.demoProject1.TestCalss1@f78a47e]" started-at="2021-05-09T13:52:52Z" name="quit" finished-at="2021-05-09T13:53:32Z" duration-ms="39539" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Test1 status=FAILURE method=TestCalss1.Test1()[pri:0, instance:com.AutomationTask.demoProject1.TestCalss1@f78a47e] output={null}]]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->
       </class> <!-- com.AutomationTask.demoProject1.TestCalss1 -->
-    </test> <!-- Test -->
-  </suite> <!-- Suite -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

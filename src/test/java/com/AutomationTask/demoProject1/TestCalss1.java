@@ -9,10 +9,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+
+import net.rcarz.jiraclient.BasicCredentials;
+import net.rcarz.jiraclient.Field;
+import net.rcarz.jiraclient.Issue;
+import net.rcarz.jiraclient.JiraClient;
+import net.rcarz.jiraclient.JiraException;
 
 public class TestCalss1 {
 
@@ -30,65 +37,32 @@ public class TestCalss1 {
 
 	@Test
 	public void Test1() throws InterruptedException {
-		SoftAssert softAssert = new SoftAssert();
+		//SoftAssert softAssert = new SoftAssert();
 		driver.navigate().to("https://tessa.equine.co.id/");
 		//Thread.sleep(10000);
 		String ActualTitle = driver.getTitle();
 		String ExpectedTitle = "Welcome to New TESSAa";
-		// Assert.assertEquals(ActualTitle, ExpectedTitle);
-		softAssert.assertEquals(ActualTitle, ExpectedTitle);
+		 Assert.assertEquals(ActualTitle, ExpectedTitle);
+		//softAssert.assertEquals(ActualTitle, ExpectedTitle);
 		System.out.println("TC 1 is executed");
 		// System.out.println(driver.getTitle());
-		// softAssert.assertAll();
-		softAssert.assertAll();
+		//softAssert.assertAll();
 		// System.out.println("Assert passed");
 
 	}
 
-	@Test
-	public void Test2() throws InterruptedException {
-		driver.navigate().to("https://tessa.equine.co.id/");
-		//Thread.sleep(5000);
-		driver.findElement(By.xpath("//span[normalize-space()='Let me in']")).click();
-		//Thread.sleep(5000);
-		String parentId = null;
-		Set<String> ids = driver.getWindowHandles();
-		Iterator<String> it = ids.iterator();
-		parentId = it.next();
-		String childId = it.next();
-		driver.switchTo().window(childId);
-		System.out.println("Test 2 title is = " + driver.getTitle());
-		//Thread.sleep(5000);
-		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
-		//Thread.sleep(5000); // WebElement webElement; String validationLoginNeNp =
-		String validationLoginNeNp = driver.findElement(By.xpath("//div[@class='text-center text-warning validation-summary-errors']//ul"))
-				.getText();
-		System.out.println("Pesan Error Login tanpa email dan pass :");
-		System.out.println(validationLoginNeNp);
-		//Thread.sleep(5000);
-		driver.findElement(By.xpath("//input[@id='Username']")).sendKeys("dwiki.olajuwan@equine.co.id");
-		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
-		String validationLoginNp = driver
-				.findElement(By.xpath("//div[@class='text-center text-warning validation-summary-errors']//ul"))
-				.getText();
-		System.out.println("Pesan Error Login tanpa pass :");
-		System.out.println(validationLoginNp);
-		//Thread.sleep(5000);
-		driver.findElement(By.xpath("//input[@id='Username']")).clear();
-		//Thread.sleep(5000);
-		driver.findElement(By.xpath("//input[@id='Password']")).sendKeys("ini password");
-		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
-		String validationLoginNe = driver
-				.findElement(By.xpath("//div[@class='text-center text-warning validation-summary-errors']//ul"))
-				.getText();
-		System.out.println("Pesan Error Login tanpa email :");
-		System.out.println(validationLoginNe);
-		//Thread.sleep(10000);
-	}
 
 
 	@AfterMethod
-	public void quit() {
+	public void quit(ITestResult result) throws JiraException {
 		driver.quit();
+		
+		if(result.getStatus() == ITestResult.FAILURE) {
+			BasicCredentials creds = new BasicCredentials("admin", "admin");
+			JiraClient jira = new JiraClient("http://localhost:8080",creds);
+			Issue issue = jira.createIssue("AUT", "Bug").field(Field.SUMMARY, result.getMethod().getMethodName() +"is failed due to: "+ result.getThrowable().toString()).field(Field.DESCRIPTION, "get the description").execute();
+			System.out.println("issue creat in jira with the name :" +issue.getKey());
+		}
+		
 	}
 }
