@@ -58,8 +58,8 @@ public class TestCalss1 {
 		driver.quit();
 		
 		if(result.getStatus() == ITestResult.FAILURE) {
-			BasicCredentials creds = new BasicCredentials("admin", "admin");
-			JiraClient jira = new JiraClient("http://localhost:8080",creds);
+			BasicCredentials creds = new BasicCredentials("yones.deliyandra", "12345678*");
+			JiraClient jira = new JiraClient("https://jira.equine.co.id/",creds);
 			Issue issue = jira.createIssue("AUT", "Bug").field(Field.SUMMARY, result.getMethod().getMethodName() +"is failed due to: "+ result.getThrowable().toString()).field(Field.DESCRIPTION, "get the description").execute();
 			System.out.println("issue creat in jira with the name :" +issue.getKey());
 		}
